@@ -36,7 +36,7 @@ function insideoutside(Σ::SpacialSection, xₚ, x)
 end
 
 function section(Σ::TemporalSection, xs::Matrix, ts::Vector; interpolate::Bool=false, returnindex::Bool=false)
-    indices = findall(t -> insideoutside(Σ, t[1], t[2]), collect(zip(ts[1:end-2], ts[2:end-1]))) .+ 1
+    indices = findall(t -> insideoutside(Σ, t[1], t[2]), collect(zip(ts[1:end-1], ts[2:end]))) .+ 1
     X = xs[:, indices]
     t = ts[indices]
     if interpolate
